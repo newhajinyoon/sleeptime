@@ -173,7 +173,7 @@ var IosSelector = function (options) {
     let scrollAdd = (touchData.startY - eventY) / this.itemHeight;
     let moveToScroll = scrollAdd + this.scroll;
 
-    // 非无限滚动时，超出范围使滚动变得困难
+
     if (this.type === 'normal') {
       if (moveToScroll < 0) {
         moveToScroll *= 0.3;
@@ -202,7 +202,6 @@ var IosSelector = function (options) {
       let startY = touchData.yArr[touchData.yArr.length - 2][0];
       let endY = touchData.yArr[touchData.yArr.length - 1][0];
 
-      // 计算速度
       v = ((startY - endY) / this.itemHeight) * 1000 / (endTime - startTime);
       let sign = v > 0 ? 1 : -1;
 
@@ -236,7 +235,7 @@ var IosSelector = function (options) {
       '</div>' +
       '</div>';
 
-    // source 处理
+    // source 
     if (this.options.type === 'infinite') {
       let concatSource = [].concat(source);
       while (concatSource.length < this.halfCount) {
@@ -247,7 +246,7 @@ var IosSelector = function (options) {
     this.source = source;
     let sourceLength = source.length;
 
-    // 圆环 HTML
+
     let circleListHTML = '';
     for (let i = 0; i < source.length; i++) {
       circleListHTML += '<li class="select-option"' +
@@ -263,7 +262,7 @@ var IosSelector = function (options) {
         '>' + source[i].text + '</li>';
     }
 
-    // 中间高亮 HTML
+
     let highListHTML = '';
     for (let i = 0; i < source.length; i++) {
       highListHTML += '<li class="highlight-item" style="height: ' + this.itemHeight + 'px;">' +
@@ -274,9 +273,9 @@ var IosSelector = function (options) {
 
     if (this.options.type === 'infinite') {
 
-      // 圆环头尾
+
       for (let i = 0; i < this.quarterCount; i++) {
-        // 头
+
         circleListHTML = '<li class="select-option"' +
           'style="' +
           'top: ' + this.itemHeight * -0.5 + 'px;' +
@@ -288,7 +287,7 @@ var IosSelector = function (options) {
           'data-rotatex="' + this.itemAngle * (i + 1) + '"' +
           'data-translatez="' + this.radius + '"' +
           '>' + source[sourceLength - i - 1].text + '</li>' + circleListHTML;
-        // 尾
+
         circleListHTML += '<li class="select-option"' +
           'style="' +
           'top: ' + this.itemHeight * -0.5 + 'px;' +
